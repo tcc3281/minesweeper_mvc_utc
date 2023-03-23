@@ -24,9 +24,11 @@ public class MineSweeperData {
         createGameData(x,y);
         print();
     }
+    
     public int getN(){
         return this.N;
     }
+    
     public int getLimitMine(){
         return this.limitMine;
     }
@@ -42,6 +44,7 @@ public class MineSweeperData {
         this.setZero(x,y);
         this.setMine();
     }
+    
     //khiến cho click đầu tiên không thể là mìn, và bằng 0;
     public void setZero(int x,int y){
         this.board[x][y]=0;
@@ -64,6 +67,7 @@ public class MineSweeperData {
             }
         }
     }
+    
     //đặt mìn
     public void setMine(){
         while(this.limitMine>0){
@@ -77,6 +81,7 @@ public class MineSweeperData {
                 if(this.board[i][j]<-1) this.board[i][j]+=20;
         }
     }
+    
     public void createMine(int x, int y){
         if(Math.random()<this.PROBILITYMINE && this.board[x][y]!=0 && this.limitMine>0 &&this.board
         [x][y]!=-1){
@@ -110,6 +115,7 @@ public class MineSweeperData {
         System.out.println(this.limitMine);
         this.check();
     }
+    
     private boolean check(int x,int y){
         int res=0;
         for(int i=x-1;i<=x+1;i++){
@@ -123,6 +129,7 @@ public class MineSweeperData {
         if(res==this.board[x][y]) return true;
         return false;
     }
+    
     private void check(){
         int countMine=0;
         for(int i = 0; i<this.N; i++){
