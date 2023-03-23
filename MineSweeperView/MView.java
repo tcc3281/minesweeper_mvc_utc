@@ -15,6 +15,7 @@ public class MView {
             Arrays.fill(vMatrix[i],"-");
         }
     }
+    
     public void showMatrix(){
     	for(int i=-1;i<N;i++) {
     		System.out.printf("%3d",i);
@@ -28,12 +29,15 @@ public class MView {
             System.out.println();
         }
     }
+    
     public void showValue(int x,int y,int t){
         this.vMatrix[x][y]=String.valueOf(t);
     }
+    
     public void setFlag(int x,int y){
         this.vMatrix[x][y]="P";
     }
+    
     public void unsetFlag(int x,int y){
         this.vMatrix[x][y]="-";
     }
