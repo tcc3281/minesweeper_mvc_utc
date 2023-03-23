@@ -33,6 +33,7 @@ public class MineSweeperLogic {
         this.opened=new boolean[N][N];
         this.markFlag=new boolean[N][N];
     }
+    
     public void setTime(){
         TimerTask task=new TimerTask() {
             @Override
@@ -43,15 +44,18 @@ public class MineSweeperLogic {
         };
         this.time.schedule(task,1000,1000);
     }
+    
     public void setIntervalTime(){
         this.intervalTime--;
         if(this.intervalTime==0){
             this.time.cancel();
         }
     }
+    
     public int getIntervalTime(){
         return this.intervalTime;
     }
+    
     public int open(int x, int y){
         if(this.data==null){
             this.data=new MineSweeperData(x,y);
@@ -73,6 +77,7 @@ public class MineSweeperLogic {
         
         return this.data.getValueXY(x, y);
     }
+    
     public void setFlag(int x, int y){
         this.remainFlag--;
         if(this.data!=null && this.data.getValueXY(x,y)==-1){
@@ -80,6 +85,7 @@ public class MineSweeperLogic {
         }
         this.markFlag[x][y]=true;
     }
+    
     public void unsetFlag(int x,int y){
         this.remainFlag++;
         if(this.data!=null && this.data.getValueXY(x,y)==-1){
