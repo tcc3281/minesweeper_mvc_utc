@@ -5,7 +5,7 @@ import MineSweeperController.MinesweeperController;
 import java.util.Arrays;
 
 public class MView {
-    private final int N=9;
+    private final int N=16;
     private String[][] vMatrix;
     private MinesweeperController controller;
     public MView(MinesweeperController controller){
