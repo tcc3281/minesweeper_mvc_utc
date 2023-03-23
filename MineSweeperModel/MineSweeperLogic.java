@@ -15,8 +15,8 @@ public class MineSweeperLogic {
     private final int MAX_TIME=999;
     private boolean flagMine=true;
     private MinesweeperController controller;
-    private final int N=9;
-    private final int MINE=10;
+    private final int N=16;
+    private final int MINE=40;
     private boolean [][]opened;
     private boolean [][]markFlag;
     

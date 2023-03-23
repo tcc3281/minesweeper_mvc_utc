@@ -3,20 +3,21 @@ package MineSweeperModel;
 import java.util.Arrays;
 
 public class MineSweeperData {
-    private final int N =9;
+    private final int N =16;
     private int [][]board;
     private final double PROBILITYMINE=0.05;
     private final double PROBITITYZERO=0.4;
     private int limitZero=15;
-    private int limitMine=10;
+    private int limitMine;
     private boolean firstClick=true;
-    private final int MINE=10;
+    private final int MINE=40;
     /*
     - mine = -1
     - nothing = 0;
     - number >0 : quality mine around
      */
     public MineSweeperData(int x,int y){
+    	this.limitMine=MINE;
         this.board=new int[N][N];
         for(int i = 0; i< N; i++)
             Arrays.fill(this.board[i],-20);
