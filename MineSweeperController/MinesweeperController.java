@@ -8,15 +8,18 @@ public class MinesweeperController{
     MineSweeperLogic logic;
     MView mView;
     Scanner sc;
+    
     public MinesweeperController(){
         this.newGame();
     }
+    
     public void newGame(){
         sc=new Scanner(System.in);
         logic=new MineSweeperLogic(this);
         mView=new MView(this);
         this.play();
     }
+    
     public void play(){
         int x;
         int flag=0;
@@ -34,6 +37,7 @@ public class MinesweeperController{
         if(flag==1) this.win();
         else this.lose();
     }
+    
     public void chosse(int x){
         int a,b;
         a= sc.nextInt();
@@ -55,6 +59,7 @@ public class MinesweeperController{
                 break;
         }
     }
+    
     public void menu(){
         System.out.println("1. Open");
         System.out.println("2. Set Flag");
@@ -62,24 +67,29 @@ public class MinesweeperController{
         System.out.println("4. New game");
         System.out.println("5. Out");
     }
+    
     public void open(int x,int y){
         int t=this.logic.open(x, y);
         this.mView.showValue(x,y,t);
     }
+    
     public void setFlag(int x, int y){
     	if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)==true) return;
         this.mView.setFlag(x,y);
         this.logic.setFlag(x,y);
     }
+    
     public void unsetFlag(int x,int y){
     	if(this.logic.getMarkFlag(x, y) == false || this.logic.getOpened(x, y)==true) return;
         this.mView.unsetFlag(x,y);
         this.logic.unsetFlag(x,y);
     }
+    
     public void win(){
         System.out.println("win: "+this.logic.getIntervalTime());
         
     }
+    
     public void lose() {
         System.out.println("lose: "+this.logic.getIntervalTime());
     }
