@@ -24,7 +24,6 @@ public class MinesweeperController{
         int x;
         int flag=0;
         do {
-        	
             this.mView.showMatrix();
             this.menu();
             Scanner sc=new Scanner(System.in);
