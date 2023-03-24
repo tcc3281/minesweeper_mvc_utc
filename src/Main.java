@@ -1,5 +1,7 @@
+import MineSweeperController.MinesweeperController;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        MinesweeperController c=new MinesweeperController();
     }
 }
