@@ -1,0 +1,10 @@
+QUY ƯỚC ĐẶT TÊN
+- Tên biến, function viết hoa chữ cái đầu nhưng trừ chữ đầu tiên: tranCongChien.
+- Tên lớp viết bắt đầu bằng chữ in hoa.
+- Để chuyên nghiệp đặt tên class, function, variable bằng tiếng anh (ko bắt buộc).
+- Đặt tên dễ gợi nhớ cho cả người lập trình và người đọc code. Cẩn thận thì ghi thêm chú thích.
+- Tên hằng số thì nên viết hoa, các chữ cách nhau dấu gạch.
+- Đặt tên một cách bao quát, giải thích tác dụng, lý do tồn tại, giá trị mà nó trả về.
+- Tên phải làm rõ nghĩa, tránh bị lạc, hiểu sai vấn đề.
+- Dùng một tên dễ đọc, có thể đọc được và không được sai chính tả.
+- Tên biến, hàm, lớp nên đặt một cách dễ tìm kiếm, dễ nhớ -> thuận lợi khi code.
