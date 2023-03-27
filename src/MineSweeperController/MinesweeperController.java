@@ -90,6 +90,8 @@ public class MinesweeperController{
     }
     
     public void lose() {
+        this.logic.lose();
+        this.mView.showMatrix();
         System.out.println("lose: "+this.logic.getIntervalTime());
     }
 }
