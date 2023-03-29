@@ -30,8 +30,8 @@ public class MView {
         }
     }
     
-    public void showValue(int x,int y,int t){
-        this.vMatrix[x][y]=String.valueOf(t);
+    public void showValue(int x,int y,String t){
+        this.vMatrix[x][y]=t;
     }
     
     public void setFlag(int x,int y){

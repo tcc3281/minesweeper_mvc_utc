@@ -24,7 +24,7 @@ public class MineSweeperLogic {
     public MineSweeperLogic(MinesweeperController controller){
         remainFlag=40;
         data=null;
-        intervalTime=MAX_TIME;
+        intervalTime=0;
         time=new Timer();
         remainMine=MINE;
         remainSquare=N*N-MINE;
@@ -46,17 +46,19 @@ public class MineSweeperLogic {
     }
     
     public void setIntervalTime(){
-        this.intervalTime--;
-        if(this.intervalTime==0){
+        this.intervalTime++;
+        if(this.intervalTime==this.MAX_TIME){
             this.time.cancel();
         }
     }
     
-    public int getIntervalTime(){
-        return this.intervalTime;
+    public String getIntervalTime(){
+        String res;
+        res=String.format("%03d",this.intervalTime);
+        return res;
     }
     
-    public int open(int x, int y){
+    public String open(int x, int y){
         if(this.data==null){
             this.data=new MineSweeperData(x,y);
         }
@@ -75,7 +77,7 @@ public class MineSweeperLogic {
         	}
         }
         
-        return this.data.getValueXY(x, y);
+        return String.format("%d",this.data.getValueXY(x, y));
     }
     
     public void setFlag(int x, int y){

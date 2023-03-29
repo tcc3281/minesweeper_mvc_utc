@@ -68,7 +68,7 @@ public class MinesweeperController{
     }
     
     public void open(int x,int y){
-        int t=this.logic.open(x, y);
+        String t=this.logic.open(x, y);
         this.mView.showValue(x,y,t);
     }
     
