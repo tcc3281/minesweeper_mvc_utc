@@ -6,19 +6,21 @@ import java.util.TimerTask;
 import MineSweeperController.MinesweeperController;
 
 public class MineSweeperLogic {
-    public MineSweeperData data;
-    private Timer time;
-    private int remainFlag;
-    private int remainMine;
-    private int remainSquare;
-    private int intervalTime;
+    public MineSweeperData data; //data của game
+    private Timer time; //bộ đếm thời gian game
+    private int remainFlag; //số cờ còn lại
+    private int remainMine; //số mìn còn lại
+    private int remainSquare; //số ô không phải bom còn lại
+    private int intervalTime; //hiện thời gian (s)
     private final int MAX_TIME=999;
-    private boolean flagMine=true;
-    private MinesweeperController controller;
-    private final int N=16;
-    private final int MINE=40;
-    private boolean [][]opened;
-    private boolean [][]markFlag;
+    private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
+    private MinesweeperController controller; //biến control
+    private final int N=16; //kích cỡ game
+    private final int MINE=40; //sô lượng mìn max
+    private boolean [][]opened; //đánh dấu ô đã mở
+    private boolean [][]markFlag; //đánh dấu ô đang trạng thái cắm cờ hay ko
+    private final boolean FLAG=true;
+    private final boolean UNFLAG=false;
     
     
     public MineSweeperLogic(MinesweeperController controller){
@@ -33,12 +35,12 @@ public class MineSweeperLogic {
         this.opened=new boolean[N][N];
         this.markFlag=new boolean[N][N];
     }
-    
+
     public void setTime(){
         TimerTask task=new TimerTask() {
             @Override
             public void run() {
-                //fix
+                //goi controller
                 setIntervalTime();
             }
         };
@@ -59,19 +61,20 @@ public class MineSweeperLogic {
     }
     
     public String open(int x, int y){
-        if(this.data==null){
-            this.data=new MineSweeperData(x,y);
-        }
-        if(this.data.getValueXY(x, y)!=-1){
-            this.remainSquare--;
-        }
+        if(this.data==null) this.data=new MineSweeperData(x,y);
+
+        if(this.data.getValueXY(x, y)!=-1) this.remainSquare--;
+
         this.opened[x][y]=true;
+
         if(this.data.getValueXY(x,y)==-1) flagMine=false;
+
         if(this.data.getValueXY(x, y)==0) {
         	for(int i=x-1;i<=x+1;i++) {
         		for(int j=y-1;j<=y+1;j++) {
         			try {
-        				if(this.opened[i][j]==false) this.controller.open(i, j);
+        				if(this.opened[i][j]==false)
+                            this.controller.open(i, j); //goi controller
         			}catch(ArrayIndexOutOfBoundsException e) {}
         		}
         	}
@@ -82,10 +85,10 @@ public class MineSweeperLogic {
     
     public void setFlag(int x, int y){
         this.remainFlag--;
-        if(this.data!=null && this.data.getValueXY(x,y)==-1){
+        if(this.data!=null && this.data.getValueXY(x,y)==-1) {
             this.remainMine--;
         }
-        this.markFlag[x][y]=true;
+        this.markFlag[x][y]=this.FLAG;
     }
     
     public void unsetFlag(int x,int y){
@@ -93,7 +96,7 @@ public class MineSweeperLogic {
         if(this.data!=null && this.data.getValueXY(x,y)==-1){
             this.remainMine++;
         }
-        this.markFlag[x][y]=false;
+        this.markFlag[x][y]=this.UNFLAG;
     }
 
     public int validateGame(){
@@ -108,10 +111,6 @@ public class MineSweeperLogic {
         else return 0;
     }
 
-    public void checkTime(){
-        System.out.println("Time: "+this.intervalTime);
-    }
-    
     public boolean getOpened(int x,int y) {
     	return this.opened[x][y];
     }
@@ -126,5 +125,14 @@ public class MineSweeperLogic {
                 if(this.data.getValueXY(i,j)==-1) this.controller.open(i,j);
             }
         }
+    }
+
+    public int getRemainFlag(){
+        return this.remainFlag;
+    }
+
+    //method bẫy để check time
+    private void checkTime(){
+        System.out.println("Time: "+this.intervalTime);
     }
 }
