@@ -22,24 +22,14 @@ public class MineSweeperData {
         for(int i = 0; i< N; i++)
             Arrays.fill(this.board[i],-20);
         createGameData(x,y);
+        //bo
         print();
-    }
-    
-    public int getN(){
-        return this.N;
-    }
-    
-    public int getLimitMine(){
-        return this.limitMine;
-    }
-
-    public int getLimitZero() {
-        return limitZero;
     }
 
     public int getValueXY(int x, int y){
         return this.board[x][y];
     }
+
     public void createGameData(int x,int y){
         this.setZero(x,y);
         this.setMine();
@@ -100,6 +90,8 @@ public class MineSweeperData {
         }
     }
 
+    //method bay
+    //in ma tran
     private void print(){
     	for(int i=-1;i<N;i++) {
     		System.out.printf("%3d",i);
@@ -115,7 +107,8 @@ public class MineSweeperData {
         System.out.println(this.limitMine);
         this.check();
     }
-    
+
+    //check tinh dung dan cua du lieu
     private boolean check(int x,int y){
         int res=0;
         for(int i=x-1;i<=x+1;i++){
