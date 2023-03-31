@@ -1,18 +1,14 @@
-package MinView;
+package View;
 
 import java.awt.BorderLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
-
 	private ButtonPlay buttonplay;
 	private PanelPlay panelplay;
 	private PanelHead panelhead;
 	private GameFrame game;
-	
 	private int w;
 	private int h;
 	private int boom;

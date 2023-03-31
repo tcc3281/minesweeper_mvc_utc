@@ -1,17 +1,15 @@
-package MinView;
+package View;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame {
 	private GamePanel gamepanel;
 	public GameFrame() {
-		// TODO Auto-generated constructor stub
 		this.add(gamepanel = new GamePanel(16, 16, 50, this));
 		try {
 			BufferedImage img = ImageIO.read(new File("./Image/minesweeper.png"));
@@ -29,8 +27,5 @@ public class GameFrame extends JFrame {
 	}
 	public void setGamepanel(GamePanel gamepanel) {
 		this.gamepanel = gamepanel;
-	}
-	public static void main(String[] args) {
-		new GameFrame();
 	}
 }

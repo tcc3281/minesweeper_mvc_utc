@@ -1,4 +1,4 @@
-package MinView;
+package View;
 
 import java.awt.Dimension;
 
@@ -6,11 +6,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ButtonPlay extends JButton {
-	private PanelPlay panelplay;
 
-	public ButtonPlay(PanelPlay panelplay)
-	{	
-		this.panelplay=panelplay;
+	public ButtonPlay()
+	{
 		setPreferredSize(new Dimension(30, 30));
 		this.appearence("-2");
 	}

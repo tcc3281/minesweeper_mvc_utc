@@ -1,9 +1,10 @@
-import MineSweeperController.MinesweeperController;
-
-//run program
+import Controller.MinesweeperController;
+import View.GameFrame;
 
 public class Main {
     public static void main(String[] args) {
-        MinesweeperController c=new MinesweeperController();
+
+        new GameFrame();
+
     }
 }

@@ -1,9 +1,8 @@
-package MinView;
+package View;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.Iterator;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -26,10 +25,10 @@ public class PanelHead extends JPanel {
 		this.add(boms = new JPanel(), BorderLayout.WEST);
 		this.add(icon= new JPanel(), BorderLayout.CENTER);
 		this.add(times= new JPanel(),BorderLayout.EAST);	
-		icon.add(smile = new ButtonSmile(this));
+		icon.add(smile = new ButtonSmile());
 		
-		times.setPreferredSize(new Dimension(85,40));
-		times.setLayout(new FlowLayout(FlowLayout.CENTER));
+//		times.setPreferredSize(new Dimension(85,40));
+		times.setLayout(new GridLayout(1,0));
 		for(int i=0;i<3;i++) this.arrTime[i]=new JLabel();
 		setTime("000");
 		
@@ -39,7 +38,32 @@ public class PanelHead extends JPanel {
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
 		boms.add(remainBom= new JLabel(remainboms));
 		
-		
+		smile.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//code
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 	}
 	public void setNumberBoms(String number) {
 		
