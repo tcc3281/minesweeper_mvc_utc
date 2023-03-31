@@ -37,33 +37,7 @@ public class PanelHead extends JPanel {
 		boms.add(mins= new JLabel());
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
 		boms.add(remainBom= new JLabel(remainboms));
-		
-		smile.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//code
-			}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-
-			}
-		});
 	}
 	public void setNumberBoms(String number) {
 		

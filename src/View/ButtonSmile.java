@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ButtonSmile extends JButton {
-		private PanelHead head;
 		public ButtonSmile() {
 			this.setPreferredSize(new Dimension(40,40));
 			this.setSmile();

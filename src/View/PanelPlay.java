@@ -52,15 +52,16 @@ public class PanelPlay extends JPanel{
 					
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						// TODO Auto-generated method stub
 						ButtonPlay[][]arrButton = getArrButton();
 						for (int i = 0; i < arrButton.length; i++) {
 							for (int j = 0; j < arrButton[i].length; j++) {
 								if(e.getButton()== 1 && e.getSource()== arrButton[i][j]) {
-									open("5", i, j);
+									//code day
+									//open("5", i, j);
 								}
 								else if(e.getButton()==3&& e.getSource()== arrButton[i][j]) {
-									setFlag(i,j);
+									//code day
+									//setFlag(i,j);
 								}
 							}
 						}
