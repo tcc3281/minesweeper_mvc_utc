@@ -3,18 +3,18 @@ package Model;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Controller.controlgame;
+import Controller.ControlGame;
 
 public class MineSweeperLogic {
     public MineSweeperData data; //data của game
-    private Timer time; //bộ đếm thời gian game
+    private TimeGame time;
     private int remainFlag; //số cờ còn lại
     private int remainMine; //số mìn còn lại
     private int remainSquare; //số ô không phải bom còn lại
     private int intervalTime; //hiện thời gian (s)
     private final int MAX_TIME=999;
     private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
-    private controlgame controller; //biến control
+    private ControlGame controlGame; //biến control
     private final int N=16; //kích cỡ game
     private final int MINE=40; //sô lượng mìn max
     private boolean [][]opened; //đánh dấu ô đã mở
@@ -23,45 +23,25 @@ public class MineSweeperLogic {
     private final boolean UNFLAG=false;
     
     
-    public MineSweeperLogic(controlgame controller){
+    public MineSweeperLogic(ControlGame controlGame){
         remainFlag=40;
         data=null;
         intervalTime=0;
-        time=new Timer();
         remainMine=MINE;
         remainSquare=N*N-MINE;
-        setTime();
-        this.controller=controller;
+        this.controlGame =controlGame;
         this.opened=new boolean[N][N];
         this.markFlag=new boolean[N][N];
+        this.time=new TimeGame(this.controlGame);
     }
 
-    public void setTime(){
-        TimerTask task=new TimerTask() {
-            @Override
-            public void run() {
-                //goi controller
-                setIntervalTime();
-            }
-        };
-        this.time.schedule(task,1000,1000);
-    }
-    
-    public void setIntervalTime(){
-        this.intervalTime++;
-        if(this.intervalTime==this.MAX_TIME){
-            this.time.cancel();
-        }
-    }
-    
-    public String getIntervalTime(){
-        String res;
-        res=String.format("%03d",this.intervalTime);
-        return res;
-    }
-    
+
+
     public String open(int x, int y){
-        if(this.data==null) this.data=new MineSweeperData(x,y);
+        if(this.data==null){
+            this.data=new MineSweeperData(x,y);
+            this.time.start();
+        }
 
         if(this.data.getValueXY(x, y)!=-1) this.remainSquare--;
 
@@ -73,7 +53,7 @@ public class MineSweeperLogic {
         	for(int i=x-1;i<=x+1;i++) {
         		for(int j=y-1;j<=y+1;j++) {
         			try {
-        				if(this.opened[i][j]==false);//code
+        				if(this.opened[i][j]==false) controlGame.open(i,j);
         			}catch(ArrayIndexOutOfBoundsException e) {}
         		}
         	}
