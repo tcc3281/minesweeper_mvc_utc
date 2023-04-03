@@ -3,7 +3,7 @@ package Model;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Controller.MinesweeperController;
+
 
 public class MineSweeperLogic {
     public MineSweeperData data; //data của game
@@ -14,7 +14,7 @@ public class MineSweeperLogic {
     private int intervalTime; //hiện thời gian (s)
     private final int MAX_TIME=999;
     private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
-    private MinesweeperController controller; //biến control
+
     private final int N=16; //kích cỡ game
     private final int MINE=40; //sô lượng mìn max
     private boolean [][]opened; //đánh dấu ô đã mở
@@ -23,7 +23,7 @@ public class MineSweeperLogic {
     private final boolean UNFLAG=false;
     
     
-    public MineSweeperLogic(MinesweeperController controller){
+    public MineSweeperLogic(){
         remainFlag=40;
         data=null;
         intervalTime=0;
@@ -31,7 +31,6 @@ public class MineSweeperLogic {
         remainMine=MINE;
         remainSquare=N*N-MINE;
         setTime();
-        this.controller=controller;
         this.opened=new boolean[N][N];
         this.markFlag=new boolean[N][N];
     }

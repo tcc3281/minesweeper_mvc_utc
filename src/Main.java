@@ -1,4 +1,4 @@
-import Controller.MinesweeperController;
+
 import View.GameFrame;
 
 public class Main {
