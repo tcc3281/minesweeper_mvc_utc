@@ -4,23 +4,24 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import Model.MineSweeperLogic;
+import View.GameFrame;
 import View.PanelHead;
 import View.PanelPlay;
-public class controlgame implements MouseListener{
+public class ControlGame implements MouseListener{
 	private MineSweeperLogic logic;
 	private PanelHead pHead;
 	private PanelPlay play;
+	private GameFrame gameFrame;
 	
-	public controlgame(PanelPlay play) {
-		this.play = play;
-		this.logic = new MineSweeperLogic(this);
+	public ControlGame() {
+		this.gameFrame=new GameFrame(this);
+		this.logic=new MineSweeperLogic(this);
+		this.play=this.gameFrame.getGamepanel().getPanelplay();
+		this.pHead=this.gameFrame.getGamepanel().getPanelhead();
+		this.gameFrame.getGamepanel().getPanelplay().addMouse(this);
+		this.gameFrame.getGamepanel().getPanelhead().addMouse(this);
+
 	}
-	public controlgame(PanelHead plHead)
-	{
-		this.pHead = plHead;
-		this.logic = new MineSweeperLogic(this);
-	}
-	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		for(int i=0;i<this.play.getArrButton().length;i++) {
@@ -62,34 +63,35 @@ public class controlgame implements MouseListener{
 	}
 	
 	
-	void open(int x, int y)
-	{	if(this.logic.getMarkFlag(x, y) == true ) return;
+	public void open(int x, int y)
+	{
+		if(this.logic.getMarkFlag(x, y) == true ) return;
 		String t = this.logic.open(x, y);
 		this.play.open(t, x, y);
 	}
-	void setFlag(int x, int y)
+	public void setFlag(int x, int y)
 	{
 		if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)==true) return;
 		this.logic.setFlag(x, y);
 		this.play.setFlag(x,y);
 	}
-	void unsetFlag(int x, int y)
+	public void unsetFlag(int x, int y)
 	{
 		if(this.logic.getMarkFlag(x, y) == false || this.logic.getOpened(x, y)==true) return;
 		this.logic.unsetFlag(x, y);
 		this.play.unsetFlag(x, y);
 	}
-	void win()
+	public void win()
 	{
 	     
 	}
-	void lose()
+	public void lose()
 	{
 		
 		
 	}
-	
-	
-	
+	public void setTime(String time){
+		this.pHead.setTime(time);
+	}
 	
 }
