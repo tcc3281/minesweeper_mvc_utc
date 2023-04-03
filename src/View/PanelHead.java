@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.controlgame;
+
 public class PanelHead extends JPanel {
 	private ButtonSmile smile;
 	private JPanel head;
@@ -26,6 +28,9 @@ public class PanelHead extends JPanel {
 		this.add(icon= new JPanel(), BorderLayout.CENTER);
 		this.add(times= new JPanel(),BorderLayout.EAST);	
 		icon.add(smile = new ButtonSmile());
+		
+		controlgame controlgame = new controlgame(this);
+		this.smile.addMouseListener(controlgame);
 		
 //		times.setPreferredSize(new Dimension(85,40));
 		times.setLayout(new GridLayout(1,0));
@@ -84,4 +89,11 @@ public class PanelHead extends JPanel {
 	public void setRemainboms(String remainboms) {
 		this.remainboms = remainboms;
 	}
+	public ButtonSmile getSmile() {
+		return smile;
+	}
+	public void setSmile(ButtonSmile smile) {
+		this.smile = smile;
+	}
+	
 }

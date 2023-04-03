@@ -1,11 +1,11 @@
 package View;
 
 import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
+import Controller.controlgame;
 
 public class PanelPlay extends JPanel{
 	
@@ -13,6 +13,8 @@ public class PanelPlay extends JPanel{
 	private ButtonPlay[][] arrButton;
 	public PanelPlay(GamePanel gamepanel) {
 		super();
+		
+		controlgame controlgame = new controlgame(this);
 		this.gamepanel= gamepanel;
 		this.setLayout(new GridLayout(gamepanel.getW(), gamepanel.getH()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -23,53 +25,55 @@ public class PanelPlay extends JPanel{
 				
 			}
 		}
-		for(int i=0;i<this.arrButton.length;i++) {
-			for(int j=0;j<this.arrButton[i].length;j++) {
-				this.arrButton[i][j].addMouseListener(new MouseListener() {
-					
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-					}
-					
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
-					
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						ButtonPlay[][]arrButton = getArrButton();
-						for (int i = 0; i < arrButton.length; i++) {
-							for (int j = 0; j < arrButton[i].length; j++) {
-								if(e.getButton()== 1 && e.getSource()== arrButton[i][j]) {
-									//code day
-									//open("5", i, j);
-								}
-								else if(e.getButton()==3&& e.getSource()== arrButton[i][j]) {
-									//code day
-									//setFlag(i,j);
-								}
-							}
-						}
-					}
-				});
-			}
-		}
-	}
+		for(int i=0;i<this.arrButton.length;i++) 
+			for(int j=0;j<this.arrButton[i].length;j++) 
+				this.arrButton[i][j].addMouseListener(controlgame);
+		} 
+				//{
+//					
+//					@Override
+//					public void mouseReleased(MouseEvent e) {
+//						// TODO Auto-generated method stub
+//					}
+//					
+//					@Override
+//					public void mousePressed(MouseEvent e) {
+//						// TODO Auto-generated method stub
+//						
+//					}
+//					
+//					@Override
+//					public void mouseExited(MouseEvent e) {
+//						// TODO Auto-generated method stub
+//						
+//					}
+//					
+//					@Override
+//					public void mouseEntered(MouseEvent e) {
+//						// TODO Auto-generated method stub
+//						
+//					}
+//					
+//					@Override
+//					public void mouseClicked(MouseEvent e) {
+//						ButtonPlay[][]arrButton = getArrButton();
+//						for (int i = 0; i < arrButton.length; i++) {
+//							for (int j = 0; j < arrButton[i].length; j++) {
+//								if(e.getButton()== 1 && e.getSource()== arrButton[i][j]) {
+//									//code day
+//									open("5", i, j);
+//								}
+//								else if(e.getButton()==3&& e.getSource()== arrButton[i][j]) {
+//									//code day
+//									//setFlag(i,j);
+//								}
+//							}
+//						}
+//					}
+//				});
+//			}
+//		}
+//	}
 
 	public void open(String number, int x, int y) {
 		this.arrButton[x][y].appearence(number);

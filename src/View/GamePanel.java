@@ -1,8 +1,11 @@
 package View;
 
 import java.awt.BorderLayout;
+import Controller.controlgame;
 
 import javax.swing.JPanel;
+
+import Controller.controlgame;
 
 public class GamePanel extends JPanel {
 	private ButtonPlay buttonplay;
@@ -12,7 +15,14 @@ public class GamePanel extends JPanel {
 	private int w;
 	private int h;
 	private int boom;
+	public PanelPlay getPanelplay() {
+		return panelplay;
+	}
+	public void setPanelplay(PanelPlay panelplay) {
+		this.panelplay = panelplay;
+	}
 	public GamePanel(int w, int h, int boom, GameFrame game) {
+		controlgame controlgame = new controlgame(this.panelplay);
 		this.game= game;
 		this.w=w;
 		this.h= h;
