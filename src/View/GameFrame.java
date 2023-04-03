@@ -7,13 +7,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import Controller.controlgame;
+import Controller.ControlGame;
 
 public class GameFrame extends JFrame {
 	private GamePanel gamepanel;
-	public GameFrame() {
-		
-		
+	private ControlGame controlGame;
+	public GameFrame(ControlGame controlGame) {
+		this.controlGame=controlGame;
 		this.add(gamepanel = new GamePanel(16, 16, 50, this));
 		try {
 			BufferedImage img = ImageIO.read(new File("./Image/minesweeper.png"));
@@ -26,8 +26,7 @@ public class GameFrame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
-		
-		controlgame controlgame = new controlgame(this.gamepanel.getPanelplay());
+
 	}
 	public GamePanel getGamepanel() {
 		return gamepanel;
