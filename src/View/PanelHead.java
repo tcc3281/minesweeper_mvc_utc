@@ -1,15 +1,13 @@
 package View;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Controller.controlgame;
+import Controller.ControlGame;
 
 public class PanelHead extends JPanel {
 	private ButtonSmile smile;
@@ -28,21 +26,21 @@ public class PanelHead extends JPanel {
 		this.add(icon= new JPanel(), BorderLayout.CENTER);
 		this.add(times= new JPanel(),BorderLayout.EAST);	
 		icon.add(smile = new ButtonSmile());
-		
-		controlgame controlgame = new controlgame(this);
-		this.smile.addMouseListener(controlgame);
-		
-//		times.setPreferredSize(new Dimension(85,40));
+
+
 		times.setLayout(new GridLayout(1,0));
 		for(int i=0;i<3;i++) this.arrTime[i]=new JLabel();
-		setTime("000");
-		
 		boms.setLayout(new FlowLayout(FlowLayout.LEFT));
 		boms.setPreferredSize(new Dimension(60,40));
 		boms.add(mins= new JLabel());
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
 		boms.add(remainBom= new JLabel(remainboms));
 
+		for(int i=0; i< 3; i++) {
+			String s=this.paintTime('0');
+			arrTime[i].setIcon(new ImageIcon(s));
+			this.times.add(arrTime[i]);
+		}
 	}
 	public void setNumberBoms(String number) {
 		
@@ -52,7 +50,6 @@ public class PanelHead extends JPanel {
 		for(int i=0; i< 3; i++) {
 			String s=this.paintTime(t.charAt(i));
 			arrTime[i].setIcon(new ImageIcon(s));
-			this.times.add(arrTime[i]);
 		}
 	}
 	
@@ -94,6 +91,9 @@ public class PanelHead extends JPanel {
 	}
 	public void setSmile(ButtonSmile smile) {
 		this.smile = smile;
+	}
+	public void addMouse(ControlGame controlGame){
+		this.smile.addMouseListener(controlGame);
 	}
 	
 }
