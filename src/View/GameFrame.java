@@ -11,13 +11,9 @@ import Controller.ControlGame;
 
 public class GameFrame extends JFrame {
 	private GamePanel gamepanel;
-<<<<<<< HEAD
-	public GameFrame() {
-=======
 	private ControlGame controlGame;
 	public GameFrame(ControlGame controlGame) {
 		this.controlGame=controlGame;
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 		this.add(gamepanel = new GamePanel(16, 16, 50, this));
 		try {
 			BufferedImage img = ImageIO.read(new File("./Image/minesweeper.png"));

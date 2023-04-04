@@ -1,10 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
-<<<<<<< HEAD
-=======
 import Controller.ControlGame;
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 
 import javax.swing.JPanel;
 

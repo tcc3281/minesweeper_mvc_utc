@@ -3,30 +3,18 @@ package Model;
 import java.util.Timer;
 import java.util.TimerTask;
 
-<<<<<<< HEAD
-
-
-public class MineSweeperLogic {
-    public MineSweeperData data; //data của game
-    private Timer time; //bộ đếm thời gian game
-=======
 import Controller.ControlGame;
 
 public class MineSweeperLogic {
     public MineSweeperData data; //data của game
     private TimeGame time;
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
     private int remainFlag; //số cờ còn lại
     private int remainMine; //số mìn còn lại
     private int remainSquare; //số ô không phải bom còn lại
     private int intervalTime; //hiện thời gian (s)
     private final int MAX_TIME=999;
     private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
-<<<<<<< HEAD
-
-=======
     private ControlGame controlGame; //biến control
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
     private final int N=16; //kích cỡ game
     private final int MINE=40; //sô lượng mìn max
     private boolean [][]opened; //đánh dấu ô đã mở
@@ -35,46 +23,6 @@ public class MineSweeperLogic {
     private final boolean UNFLAG=false;
     
     
-<<<<<<< HEAD
-    public MineSweeperLogic(){
-        remainFlag=40;
-        data=null;
-        intervalTime=0;
-        time=new Timer();
-        remainMine=MINE;
-        remainSquare=N*N-MINE;
-        setTime();
-        this.opened=new boolean[N][N];
-        this.markFlag=new boolean[N][N];
-    }
-
-    public void setTime(){
-        TimerTask task=new TimerTask() {
-            @Override
-            public void run() {
-                //goi controller
-                setIntervalTime();
-            }
-        };
-        this.time.schedule(task,1000,1000);
-    }
-    
-    public void setIntervalTime(){
-        this.intervalTime++;
-        if(this.intervalTime==this.MAX_TIME){
-            this.time.cancel();
-        }
-    }
-    
-    public String getIntervalTime(){
-        String res;
-        res=String.format("%03d",this.intervalTime);
-        return res;
-    }
-    
-    public String open(int x, int y){
-        if(this.data==null) this.data=new MineSweeperData(x,y);
-=======
     public MineSweeperLogic(ControlGame controlGame){
         remainFlag=40;
         data=null;
@@ -94,7 +42,6 @@ public class MineSweeperLogic {
             this.data=new MineSweeperData(x,y);
             this.time.start();
         }
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 
         if(this.data.getValueXY(x, y)!=-1) this.remainSquare--;
 
@@ -106,11 +53,7 @@ public class MineSweeperLogic {
         	for(int i=x-1;i<=x+1;i++) {
         		for(int j=y-1;j<=y+1;j++) {
         			try {
-<<<<<<< HEAD
-        				if(this.opened[i][j]==false);//code
-=======
         				if(this.opened[i][j]==false) controlGame.open(i,j);
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
         			}catch(ArrayIndexOutOfBoundsException e) {}
         		}
         	}

@@ -1,11 +1,6 @@
 package View;
 
 import java.awt.*;
-<<<<<<< HEAD
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-=======
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -31,13 +26,8 @@ public class PanelHead extends JPanel {
 		this.add(icon= new JPanel(), BorderLayout.CENTER);
 		this.add(times= new JPanel(),BorderLayout.EAST);	
 		icon.add(smile = new ButtonSmile());
-<<<<<<< HEAD
-		
-//		times.setPreferredSize(new Dimension(85,40));
-=======
 
 
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 		times.setLayout(new GridLayout(1,0));
 		for(int i=0;i<3;i++) this.arrTime[i]=new JLabel();
 		boms.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -46,14 +36,11 @@ public class PanelHead extends JPanel {
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
 		boms.add(remainBom= new JLabel(remainboms));
 
-<<<<<<< HEAD
-=======
 		for(int i=0; i< 3; i++) {
 			String s=this.paintTime('0');
 			arrTime[i].setIcon(new ImageIcon(s));
 			this.times.add(arrTime[i]);
 		}
->>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 	}
 	public void setNumberBoms(String number) {
 		
