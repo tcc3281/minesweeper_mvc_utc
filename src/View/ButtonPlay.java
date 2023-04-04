@@ -19,8 +19,9 @@ public class ButtonPlay extends JButton {
 			setIcon(imgbegin);
 			break;
 		case "-1":
-			ImageIcon imgboms= new ImageIcon("./Image/bom.png");
+			ImageIcon imgboms= new ImageIcon("./Image/bom.png/");
 			setIcon(imgboms);
+			break;
 		case "0":
 			ImageIcon img0=  new ImageIcon("./Image/empty box.png/");
 			setIcon(img0);

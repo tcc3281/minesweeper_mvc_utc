@@ -1,12 +1,16 @@
 package View;
 
 import java.awt.GridLayout;
+<<<<<<< HEAD
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+=======
+>>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 public class PanelPlay extends JPanel{
 	
 	private GamePanel gamepanel;
@@ -67,10 +71,32 @@ public class PanelPlay extends JPanel{
 						}
 					}
 				});
+=======
+import Controller.ControlGame;
+
+public class PanelPlay extends JPanel {
+
+	private GamePanel gamepanel;
+	private ButtonPlay[][] arrButton;
+
+	public PanelPlay(GamePanel gamepanel) {
+		super();
+		this.setLayout(new GridLayout(gamepanel.getW(), gamepanel.getH()));
+		this.setBorder(BorderFactory.createLoweredBevelBorder());
+		arrButton = new ButtonPlay[gamepanel.getW()][gamepanel.getH()];
+		for (int i = 0; i < arrButton.length; i++) {
+			for (int j = 0; j < arrButton[i].length; j++) {
+				this.add(arrButton[i][j] = new ButtonPlay());
+
+>>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 			}
 		}
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 	public void open(String number, int x, int y) {
 		this.arrButton[x][y].appearence(number);
 	}
@@ -92,5 +118,14 @@ public class PanelPlay extends JPanel{
 	public void setArrButton(ButtonPlay[][] arrButton) {
 		this.arrButton = arrButton;
 	}
+<<<<<<< HEAD
 	
+=======
+
+	public void addMouse(ControlGame controlGame){
+		for (int i = 0; i < this.arrButton.length; i++)
+			for (int j = 0; j < this.arrButton[i].length; j++)
+				this.arrButton[i][j].addMouseListener(controlGame);
+	}
+>>>>>>> 6d0c6c5d97f2da64ceec374ba1c2834f5dc9da6c
 }
