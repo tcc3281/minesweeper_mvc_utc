@@ -18,8 +18,8 @@ public class ButtonPlay extends JButton {
 			ImageIcon imgbegin=  new ImageIcon("./Image/begin.png/");
 			setIcon(imgbegin);
 			break;
-		case "-1":
-			ImageIcon imgboms= new ImageIcon("./Image/bom.png/");
+		case "-1": // doi thanh bom chet
+			ImageIcon imgboms= new ImageIcon("./Image/mistake.png/");
 			setIcon(imgboms);
 			break;
 		case "0":

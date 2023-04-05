@@ -49,8 +49,8 @@ public class ButtonSmile extends JButton {
 		}
 		public void setSad() {
 			this.setIcon(new ImageIcon("./Image/lose.png"));
-	}
+		}
 		public void setWin() {
-					this.setIcon(new ImageIcon("./Image/win.png"));
-				}
+			this.setIcon(new ImageIcon("./Image/win.png"));
+		}
 }

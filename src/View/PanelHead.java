@@ -92,6 +92,15 @@ public class PanelHead extends JPanel {
 	public void setSmile(ButtonSmile smile) {
 		this.smile = smile;
 	}
+	
+	public void lose()
+	{
+		this.smile.setSad();
+	}
+	public void win()
+	{
+		this.smile.setWin();
+	}
 	public void addMouse(ControlGame controlGame){
 		this.smile.addMouseListener(controlGame);
 	}

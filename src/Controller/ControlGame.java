@@ -24,11 +24,20 @@ public class ControlGame implements MouseListener{
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
+			this.newGame();
 		for(int i=0;i<this.play.getArrButton().length;i++) {
 			for(int j=0;j<this.play.getArrButton()[i].length;j++)
 			{
 				if(e.getButton()== 1 && e.getSource()== this.play.getArrButton()[i][j]) {
 					this.open(i, j);
+					if(this.logic.validateGame() == -1)
+					{	
+						this.lose();
+						return;
+					}
+					else if(this.logic.validateGame()== 1)
+						this.win();
 				}
 				else if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
 					if(this.logic.getMarkFlag(i, j) == true)
@@ -39,7 +48,6 @@ public class ControlGame implements MouseListener{
 			}
 		}
 	}
-	
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -59,9 +67,30 @@ public class ControlGame implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
+			this.newGame();
+		for(int i=0;i<this.play.getArrButton().length;i++) {
+			for(int j=0;j<this.play.getArrButton()[i].length;j++)
+			{
+				if(e.getButton()== 1 && e.getSource()== this.play.getArrButton()[i][j]) {
+					this.open(i, j);
+					if(this.logic.validateGame() == -1)
+					{	
+						this.lose();
+						return;
+					}
+					else if(this.logic.validateGame()== 1)
+						this.win();
+				}
+				else if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
+					if(this.logic.getMarkFlag(i, j) == true)
+						this.unsetFlag(i, j);
+					else 
+						this.setFlag(i,j);
+				}
+			}
+		}
 	}
-	
 	
 	public void open(int x, int y)
 	{
@@ -81,14 +110,22 @@ public class ControlGame implements MouseListener{
 		this.logic.unsetFlag(x, y);
 		this.play.unsetFlag(x, y);
 	}
+	
+	public void newGame()
+	{
+		ControlGame controlGame = new ControlGame();
+	}
 	public void win()
 	{
-	     
+	     this.pHead.win();
 	}
 	public void lose()
 	{
-		
-		
+		for(int i=0;i<this.play.getArrButton().length;i++) {
+			for(int j=0;j<this.play.getArrButton()[i].length;j++)
+				if(this.logic.getData().getValueXY(i, j)==-1) this.open(i, j);
+		}
+		this.pHead.lose();
 	}
 	public void setTime(String time){
 		this.pHead.setTime(time);
