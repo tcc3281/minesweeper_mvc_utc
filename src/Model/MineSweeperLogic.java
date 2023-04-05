@@ -101,6 +101,7 @@ public class MineSweeperLogic {
     public boolean getMarkFlag(int x, int y) {
     	return this.markFlag[x][y];
     }
+    
 
     public void lose(){
         for(int i=0;i<this.N ;i++){
@@ -118,4 +119,7 @@ public class MineSweeperLogic {
     private void checkTime(){
         System.out.println("Time: "+this.intervalTime);
     }
+    public MineSweeperData getData() {
+		return data;
+	}
 }
