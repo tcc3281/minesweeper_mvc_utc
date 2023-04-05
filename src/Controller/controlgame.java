@@ -13,12 +13,21 @@ public class controlgame implements MouseListener{
 	
 	public controlgame(PanelPlay play) {
 		this.play = play;
-		this.logic = new MineSweeperLogic(this);
 	}
 	public controlgame(PanelHead plHead)
 	{
 		this.pHead = plHead;
+	}
+	
+	void newGame()
+	{
 		this.logic = new MineSweeperLogic(this);
+		this.play();
+	}
+	
+	void play()
+	{
+		
 	}
 	
 	@Override
