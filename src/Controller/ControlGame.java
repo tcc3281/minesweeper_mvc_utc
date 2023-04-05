@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import Model.MineSweeperLogic;
 import View.GameFrame;
+import View.GamePanel;
 import View.PanelHead;
 import View.PanelPlay;
 public class ControlGame implements MouseListener{
@@ -68,7 +69,9 @@ public class ControlGame implements MouseListener{
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
+		{
 			this.newGame();
+		}
 		for(int i=0;i<this.play.getArrButton().length;i++) {
 			for(int j=0;j<this.play.getArrButton()[i].length;j++)
 			{
@@ -113,7 +116,7 @@ public class ControlGame implements MouseListener{
 	
 	public void newGame()
 	{
-		ControlGame controlGame = new ControlGame();
+		new ControlGame();
 	}
 	public void win()
 	{
