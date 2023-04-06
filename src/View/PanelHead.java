@@ -27,8 +27,8 @@ public class PanelHead extends JPanel {
 		this.add(times= new JPanel(),BorderLayout.EAST);
 		icon.add(smile = new ButtonSmile());
 
-
-		times.setLayout(new GridLayout(1,0));
+		times.setPreferredSize(new Dimension(70,40));
+		times.setLayout(new GridLayout(1,3,0,0));
 		for(int i=0;i<3;i++) this.arrTime[i]=new JLabel();
 		boms.setLayout(new FlowLayout(FlowLayout.LEFT));
 		boms.setPreferredSize(new Dimension(60,40));
