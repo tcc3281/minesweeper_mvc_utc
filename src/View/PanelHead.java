@@ -11,11 +11,11 @@ import Controller.ControlGame;
 
 public class PanelHead extends JPanel {
 	private ButtonSmile smile;
-	private JPanel head;
 	private JPanel boms, icon, times;
 	private GamePanel gamepanel;
 	private JLabel[] arrTime;
-	private JLabel mins,remainBom;
+	private JLabel mins;
+	private JLabel remainBomsJL;
 	private String  remainboms="40";
 	public PanelHead( GamePanel gamepanel) {
 		this.gamepanel= gamepanel;
@@ -29,19 +29,18 @@ public class PanelHead extends JPanel {
 
 		times.setPreferredSize(new Dimension(70,40));
 		times.setLayout(new GridLayout(1,3,0,0));
-		for(int i=0;i<3;i++) this.arrTime[i]=new JLabel();
+		for(int i=0; i< 3; i++) {
+			String s=this.paintTime('0');
+			this.arrTime[i]=new JLabel(new ImageIcon(s));
+			this.times.add(arrTime[i]);
+		}
+
 		boms.setLayout(new FlowLayout(FlowLayout.LEFT));
 		boms.setPreferredSize(new Dimension(60,40));
 		boms.add(mins= new JLabel());
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
-		boms.add(remainBom= new JLabel(this.getRemainboms()));
-		for(int i=0; i< 3; i++) {
-			String s=this.paintTime('0');
-			arrTime[i].setIcon(new ImageIcon(s));
-			this.times.add(arrTime[i]);
-		}
-	}
-	public void setNumberBoms(String number) {
+		boms.add(remainBomsJL = new JLabel(this.getRemainboms()));
+
 	}
 
 	public void setTime(String t) {
@@ -80,13 +79,12 @@ public class PanelHead extends JPanel {
 	}
 
 	public String getRemainboms() {
-
 		return remainboms;
 
 	}
 	public void setRemainboms(String remainboms) {
 		this.remainboms = remainboms;
-		this.remainBom.setText(remainboms);
+		this.remainBomsJL.setText(remainboms);
 	}
 	public ButtonSmile getSmile() {
 		return smile;

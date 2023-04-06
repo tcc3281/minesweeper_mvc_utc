@@ -3,14 +3,14 @@ package Model;
 import java.util.Arrays;
 
 public class MineSweeperData {
-    private final int N =16;
+    static int SIDE =16;
+    static int MINE=40;
     private int [][]board;
     private final double PROBILITYMINE=0.05;
     private final double PROBITITYZERO=0.4;
     private int limitZero=15;
     private int limitMine;
     private boolean firstClick=true;
-    private final int MINE=40;
     /*
     - mine = -1
     - nothing = 0;
@@ -18,15 +18,11 @@ public class MineSweeperData {
      */
     public MineSweeperData(int x,int y){
         this.limitMine=MINE;
-        this.board=new int[N][N];
-        for(int i = 0; i< N; i++)
+        this.board=new int[SIDE][SIDE];
+        for(int i = 0; i< SIDE; i++)
             Arrays.fill(this.board[i],-20);
         createGameData(x,y);
         print();
-    }
-
-    public int getN(){
-        return this.N;
     }
 
     public int getLimitMine(){
@@ -72,12 +68,12 @@ public class MineSweeperData {
     public void setMine(){
         while(this.limitMine>0){
             int x,y;
-            x=(int)(Math.random()*this.N)%this.N;
-            y=(int)(Math.random()*this.N)%this.N;
+            x=(int)(Math.random()*this.SIDE)%this.SIDE;
+            y=(int)(Math.random()*this.SIDE)%this.SIDE;
             createMine(x,y);
         }
-        for(int i = 0; i< N; i++){
-            for(int j = 0; j< N; j++)
+        for(int i = 0; i< SIDE; i++){
+            for(int j = 0; j< SIDE; j++)
                 if(this.board[i][j]<-1) this.board[i][j]+=20;
         }
     }
@@ -101,13 +97,13 @@ public class MineSweeperData {
     }
 
     private void print(){
-        for(int i=-1;i<N;i++) {
+        for(int i = -1; i< SIDE; i++) {
             System.out.printf("%3d",i);
         }
         System.out.println();
-        for(int i = 0; i< N; i++){
+        for(int i = 0; i< SIDE; i++){
             System.out.printf("%3d",i);
-            for(int j = 0; j< N; j++){
+            for(int j = 0; j< SIDE; j++){
                 System.out.printf("%3d",this.board[i][j]);
             }
             System.out.println();
@@ -132,8 +128,8 @@ public class MineSweeperData {
 
     private void check(){
         int countMine=0;
-        for(int i = 0; i<this.N; i++){
-            for(int j = 0; j<this.N; j++){
+        for(int i = 0; i<this.SIDE; i++){
+            for(int j = 0; j<this.SIDE; j++){
                 if(this.board[i][j]==-1) countMine++;
                 if(this.board[i][j]>0){
                     if(!check(i,j)){

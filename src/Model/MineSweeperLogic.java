@@ -1,43 +1,34 @@
 package Model;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import Controller.ControlGame;
 
 public class MineSweeperLogic {
+    public static int MINE=MineSweeperData.MINE;
+    public static int SIDE=MineSweeperData.SIDE;
     public MineSweeperData data; //data của game
     private TimeGame time;
     private int remainFlag; //số cờ còn lại
     private int remainMine; //số mìn còn lại
     private int remainSquare; //số ô không phải bom còn lại
-    private int intervalTime; //hiện thời gian (s)
-    private final int MAX_TIME=999;
     private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
     private ControlGame controlGame; //biến control
-    private final int N=16; //kích cỡ game
-    private final int MINE=40; //sô lượng mìn max
     private boolean [][]opened; //đánh dấu ô đã mở
     private boolean [][]markFlag; //đánh dấu ô đang trạng thái cắm cờ hay ko
     private final boolean FLAG=true;
     private final boolean UNFLAG=false;
 
-
     public MineSweeperLogic(ControlGame controlGame){
         remainFlag=40;
         data=null;
-        intervalTime=0;
         remainMine=MINE;
-        remainSquare=N*N-MINE;
+        remainSquare= SIDE * SIDE -MINE;
         this.controlGame =controlGame;
-        this.opened=new boolean[N][N];
-        this.markFlag=new boolean[N][N];
+        this.opened=new boolean[SIDE][SIDE];
+        this.markFlag=new boolean[SIDE][SIDE];
         this.time=new TimeGame(this.controlGame);
     }
-
-
 
     public String open(int x, int y){
         if(this.data==null){
@@ -106,8 +97,8 @@ public class MineSweeperLogic {
 
 
     public void lose(){
-        for(int i=0;i<this.N ;i++){
-            for(int j=0;j<this.N;j++){
+        for(int i = 0; i<this.SIDE; i++){
+            for(int j = 0; j<this.SIDE; j++){
                 if(this.data.getValueXY(i,j)==-1);//code
             }
         }
@@ -121,7 +112,7 @@ public class MineSweeperLogic {
         return data;
     }
     public void stopOpen() {
-        for(int i=0;i<this.N;i++ ) {
+        for(int i = 0; i<this.SIDE; i++ ) {
             Arrays.fill(this.opened[i], true);
         }
     }

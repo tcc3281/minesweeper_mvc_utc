@@ -15,7 +15,9 @@ public class ControlGame implements MouseListener{
 
     public ControlGame() {
         this.gameFrame=new GameFrame(this);
+        int x= MineSweeperLogic.MINE;
         this.logic=new MineSweeperLogic(this);
+
         this.play=this.gameFrame.getGamepanel().getPanelplay();
         this.pHead=this.gameFrame.getGamepanel().getPanelhead();
         this.gameFrame.getGamepanel().getPanelplay().addMouse(this);
@@ -66,7 +68,6 @@ public class ControlGame implements MouseListener{
     }
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
         if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
         {
             this.newGame();
