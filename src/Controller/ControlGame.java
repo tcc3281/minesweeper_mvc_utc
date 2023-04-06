@@ -83,7 +83,9 @@ public class ControlGame implements MouseListener{
                         return;
                     }
                     else if(this.logic.validateGame()== 1)
+                    {
                         this.win();
+                    }
                 }
                 else if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
                     if(this.logic.getMarkFlag(i, j) == true)
@@ -97,7 +99,7 @@ public class ControlGame implements MouseListener{
 
     public void open(int x, int y)
     {
-        if(this.logic.getMarkFlag(x, y) == true ) return;
+        if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)) return;
         String t = this.logic.open(x, y);
         this.play.open(t, x, y);
     }
@@ -106,16 +108,19 @@ public class ControlGame implements MouseListener{
         if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)==true) return;
         this.logic.setFlag(x, y);
         this.play.setFlag(x,y);
+        this.remainMine();
     }
     public void unsetFlag(int x, int y)
     {
         if(this.logic.getMarkFlag(x, y) == false || this.logic.getOpened(x, y)==true) return;
         this.logic.unsetFlag(x, y);
         this.play.unsetFlag(x, y);
+        this.remainMine();
     }
 
     public void newGame()
     {
+        this.gameFrame.dispose();
         new ControlGame();
     }
     public void win()
@@ -129,9 +134,16 @@ public class ControlGame implements MouseListener{
                 if(this.logic.getData().getValueXY(i, j)==-1) this.open(i, j);
         }
         this.pHead.lose();
+        this.logic.stopOpen();
     }
     public void setTime(String time){
         this.pHead.setTime(time);
+    }
+
+    public void remainMine() {
+        String t = String.valueOf(this.logic.getRemainFlag());
+        this.pHead.setRemainboms(t);
+        System.out.println(this.pHead.getRemainboms());
     }
 
 }

@@ -34,8 +34,7 @@ public class PanelHead extends JPanel {
 		boms.setPreferredSize(new Dimension(60,40));
 		boms.add(mins= new JLabel());
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
-		boms.add(remainBom= new JLabel(remainboms));
-
+		boms.add(remainBom= new JLabel(this.getRemainboms()));
 		for(int i=0; i< 3; i++) {
 			String s=this.paintTime('0');
 			arrTime[i].setIcon(new ImageIcon(s));
@@ -43,7 +42,6 @@ public class PanelHead extends JPanel {
 		}
 	}
 	public void setNumberBoms(String number) {
-
 	}
 
 	public void setTime(String t) {
@@ -80,11 +78,15 @@ public class PanelHead extends JPanel {
 		}
 		return null;
 	}
+
 	public String getRemainboms() {
+
 		return remainboms;
+
 	}
 	public void setRemainboms(String remainboms) {
 		this.remainboms = remainboms;
+		this.remainBom.setText(remainboms);
 	}
 	public ButtonSmile getSmile() {
 		return smile;

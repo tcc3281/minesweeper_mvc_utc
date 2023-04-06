@@ -1,5 +1,7 @@
 package Model;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,8 +23,8 @@ public class MineSweeperLogic {
     private boolean [][]markFlag; //đánh dấu ô đang trạng thái cắm cờ hay ko
     private final boolean FLAG=true;
     private final boolean UNFLAG=false;
-    
-    
+
+
     public MineSweeperLogic(ControlGame controlGame){
         remainFlag=40;
         data=null;
@@ -50,18 +52,18 @@ public class MineSweeperLogic {
         if(this.data.getValueXY(x,y)==-1) flagMine=false;
 
         if(this.data.getValueXY(x, y)==0) {
-        	for(int i=x-1;i<=x+1;i++) {
-        		for(int j=y-1;j<=y+1;j++) {
-        			try {
-        				if(this.opened[i][j]==false) controlGame.open(i,j);
-        			}catch(ArrayIndexOutOfBoundsException e) {}
-        		}
-        	}
+            for(int i=x-1;i<=x+1;i++) {
+                for(int j=y-1;j<=y+1;j++) {
+                    try {
+                        if(this.opened[i][j]==false) controlGame.open(i,j);
+                    }catch(ArrayIndexOutOfBoundsException e) {}
+                }
+            }
         }
-        
+
         return String.format("%d",this.data.getValueXY(x, y));
     }
-    
+
     public boolean setFlag(int x, int y){
         if(this.opened[x][y]==true || this.markFlag[x][y]==this.FLAG) return false;
         this.remainFlag--;
@@ -71,7 +73,7 @@ public class MineSweeperLogic {
         this.markFlag[x][y]=this.FLAG;
         return true;
     }
-    
+
     public boolean unsetFlag(int x,int y){
         if(this.opened[x][y]==true || this.markFlag[x][y]==this.UNFLAG) return false;
         this.remainFlag++;
@@ -95,13 +97,13 @@ public class MineSweeperLogic {
     }
 
     public boolean getOpened(int x,int y) {
-    	return this.opened[x][y];
+        return this.opened[x][y];
     }
-    
+
     public boolean getMarkFlag(int x, int y) {
-    	return this.markFlag[x][y];
+        return this.markFlag[x][y];
     }
-    
+
 
     public void lose(){
         for(int i=0;i<this.N ;i++){
@@ -119,8 +121,12 @@ public class MineSweeperLogic {
     private void checkTime(){
         System.out.println("Time: "+this.intervalTime);
     }
-
     public MineSweeperData getData() {
         return data;
+    }
+    public void stopOpen() {
+        for(int i=0;i<this.N;i++ ) {
+            Arrays.fill(this.opened[i], true);
+        }
     }
 }

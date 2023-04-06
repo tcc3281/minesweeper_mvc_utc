@@ -47,11 +47,7 @@ public class PanelPlay extends JPanel {
 	public void setArrButton(ButtonPlay[][] arrButton) {
 		this.arrButton = arrButton;
 	}
-	
-	public void lose()
-	{
-		
-	}
+
 
 	public void addMouse(ControlGame controlGame){
 		for (int i = 0; i < this.arrButton.length; i++)

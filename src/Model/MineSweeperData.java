@@ -17,24 +17,34 @@ public class MineSweeperData {
     - number >0 : quality mine around
      */
     public MineSweeperData(int x,int y){
-    	this.limitMine=MINE;
+        this.limitMine=MINE;
         this.board=new int[N][N];
         for(int i = 0; i< N; i++)
             Arrays.fill(this.board[i],-20);
         createGameData(x,y);
-        //bo
         print();
+    }
+
+    public int getN(){
+        return this.N;
+    }
+
+    public int getLimitMine(){
+        return this.limitMine;
+    }
+
+    public int getLimitZero() {
+        return limitZero;
     }
 
     public int getValueXY(int x, int y){
         return this.board[x][y];
     }
-
     public void createGameData(int x,int y){
         this.setZero(x,y);
         this.setMine();
     }
-    
+
     //khiến cho click đầu tiên không thể là mìn, và bằng 0;
     public void setZero(int x,int y){
         this.board[x][y]=0;
@@ -57,7 +67,7 @@ public class MineSweeperData {
             }
         }
     }
-    
+
     //đặt mìn
     public void setMine(){
         while(this.limitMine>0){
@@ -71,10 +81,10 @@ public class MineSweeperData {
                 if(this.board[i][j]<-1) this.board[i][j]+=20;
         }
     }
-    
+
     public void createMine(int x, int y){
         if(Math.random()<this.PROBILITYMINE && this.board[x][y]!=0 && this.limitMine>0 &&this.board
-        [x][y]!=-1){
+                [x][y]!=-1){
             this.board[x][y]=-1;
             this.limitMine--;
             for(int i=x-1;i<=x+1;i++){
@@ -90,17 +100,15 @@ public class MineSweeperData {
         }
     }
 
-    //method bay
-    //in ma tran
     private void print(){
-    	for(int i=-1;i<N;i++) {
-    		System.out.printf("%3d",i);
-    	}
-    	System.out.println();
+        for(int i=-1;i<N;i++) {
+            System.out.printf("%3d",i);
+        }
+        System.out.println();
         for(int i = 0; i< N; i++){
-        	System.out.printf("%3d",i);
+            System.out.printf("%3d",i);
             for(int j = 0; j< N; j++){
-            	System.out.printf("%3d",this.board[i][j]);
+                System.out.printf("%3d",this.board[i][j]);
             }
             System.out.println();
         }
@@ -108,7 +116,6 @@ public class MineSweeperData {
         this.check();
     }
 
-    //check tinh dung dan cua du lieu
     private boolean check(int x,int y){
         int res=0;
         for(int i=x-1;i<=x+1;i++){
@@ -119,11 +126,10 @@ public class MineSweeperData {
                 catch (ArrayIndexOutOfBoundsException e){}
             }
         }
-
         if(res==this.board[x][y]) return true;
         return false;
     }
-    
+
     private void check(){
         int countMine=0;
         for(int i = 0; i<this.N; i++){
