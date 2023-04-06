@@ -1,7 +1,6 @@
 package View;
 
 import java.awt.BorderLayout;
-import Controller.ControlGame;
 
 import javax.swing.JPanel;
 

@@ -117,10 +117,6 @@ public class MineSweeperLogic {
         return this.remainFlag;
     }
 
-    //method bẫy để check time
-    private void checkTime(){
-        System.out.println("Time: "+this.intervalTime);
-    }
     public MineSweeperData getData() {
         return data;
     }

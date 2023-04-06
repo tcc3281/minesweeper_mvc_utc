@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 
 import Model.MineSweeperLogic;
 import View.GameFrame;
-import View.GamePanel;
 import View.PanelHead;
 import View.PanelPlay;
 public class ControlGame implements MouseListener{
