@@ -119,7 +119,8 @@ public class MineSweeperLogic {
     private void checkTime(){
         System.out.println("Time: "+this.intervalTime);
     }
+
     public MineSweeperData getData() {
-		return data;
-	}
+        return data;
+    }
 }

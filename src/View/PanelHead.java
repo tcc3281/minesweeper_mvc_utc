@@ -16,7 +16,7 @@ public class PanelHead extends JPanel {
 	private GamePanel gamepanel;
 	private JLabel[] arrTime;
 	private JLabel mins,remainBom;
-	private String  remainboms="30";
+	private String  remainboms="40";
 	public PanelHead( GamePanel gamepanel) {
 		this.gamepanel= gamepanel;
 		arrTime= new JLabel[3];
@@ -24,7 +24,7 @@ public class PanelHead extends JPanel {
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 		this.add(boms = new JPanel(), BorderLayout.WEST);
 		this.add(icon= new JPanel(), BorderLayout.CENTER);
-		this.add(times= new JPanel(),BorderLayout.EAST);	
+		this.add(times= new JPanel(),BorderLayout.EAST);
 		icon.add(smile = new ButtonSmile());
 
 
@@ -43,40 +43,40 @@ public class PanelHead extends JPanel {
 		}
 	}
 	public void setNumberBoms(String number) {
-		
+
 	}
-	
+
 	public void setTime(String t) {
 		for(int i=0; i< 3; i++) {
 			String s=this.paintTime(t.charAt(i));
 			arrTime[i].setIcon(new ImageIcon(s));
 		}
 	}
-	
+
 	public String paintTime(char tg) {
 		switch (tg) {
-		case '0':
-			return "./Image/0.png";
-		case '1':
-			return "./Image/1.png";
-		case '2':
-			return "./Image/2.png";
-		case '3':
-			return "./Image/3.png";
-		case '4':
-			return "./Image/4.png";
-		case '5':
-			return "./Image/5.png";
-		case '6':
-			return "./Image/6.png";
-		case '7':
-			return "./Image/7.png";
-		case '8':
-			return "./Image/8.png";
-		case '9':
-			return "./Image/9.png";
-		default:
-			break;
+			case '0':
+				return "./Image/0.png";
+			case '1':
+				return "./Image/1.png";
+			case '2':
+				return "./Image/2.png";
+			case '3':
+				return "./Image/3.png";
+			case '4':
+				return "./Image/4.png";
+			case '5':
+				return "./Image/5.png";
+			case '6':
+				return "./Image/6.png";
+			case '7':
+				return "./Image/7.png";
+			case '8':
+				return "./Image/8.png";
+			case '9':
+				return "./Image/9.png";
+			default:
+				break;
 		}
 		return null;
 	}
@@ -92,7 +92,7 @@ public class PanelHead extends JPanel {
 	public void setSmile(ButtonSmile smile) {
 		this.smile = smile;
 	}
-	
+
 	public void lose()
 	{
 		this.smile.setSad();
@@ -104,5 +104,5 @@ public class PanelHead extends JPanel {
 	public void addMouse(ControlGame controlGame){
 		this.smile.addMouseListener(controlGame);
 	}
-	
+
 }
