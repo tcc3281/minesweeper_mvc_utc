@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MineSweeperData {
     static int WIDTH =16;
     static int HEIGHT=16;
-    static int MINE=40;
+    static int MINE=60;
     private int [][]board;
     private final double PROBILITYMINE=0.05;
     private final double PROBITITYZERO=0.4;
@@ -73,15 +73,14 @@ public class MineSweeperData {
             y=(int)(Math.random()*this.WIDTH)%this.WIDTH;
             createMine(x,y);
         }
-        for(int i = 0; i< HEIGHT; i++){
-            for(int j = 0; j< WIDTH; j++)
+        for(int i = 0; i< this.board.length; i++){
+            for(int j = 0; j< this.board[i].length; j++)
                 if(this.board[i][j]<-1) this.board[i][j]+=20;
         }
     }
 
     public void createMine(int x, int y){
-        if(Math.random()<this.PROBILITYMINE && this.board[x][y]!=0 && this.limitMine>0 &&this.board
-                [x][y]!=-1){
+        if(Math.random()<this.PROBILITYMINE && this.board[x][y]!=0 && this.limitMine>0 &&this.board[x][y]!=-1){
             this.board[x][y]=-1;
             this.limitMine--;
             for(int i=x-1;i<=x+1;i++){

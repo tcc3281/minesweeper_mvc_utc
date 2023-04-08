@@ -24,10 +24,12 @@ public class MineSweeperLogic {
         remainFlag=MINE;
         data=null;
         remainMine=MINE;
-        remainSquare= WIDTH * HEIGHT -MINE;
+        remainSquare= WIDTH * HEIGHT - MINE;
         this.controlGame =controlGame;
         this.opened=new boolean[HEIGHT][WIDTH];
         this.markFlag=new boolean[HEIGHT][WIDTH];
+        for(int i=0;i<markFlag.length;i++)
+            Arrays.fill(markFlag[i],false);
         this.time=new TimeGame(this.controlGame);
     }
 
@@ -36,7 +38,6 @@ public class MineSweeperLogic {
             this.data=new MineSweeperData(x,y);
             this.time.start();
         }
-
         if(this.data.getValueXY(x, y)!=-1) this.remainSquare--;
 
         this.opened[x][y]=true;

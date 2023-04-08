@@ -68,33 +68,7 @@ public class ControlGame implements MouseListener{
     }
     @Override
     public void mouseExited(MouseEvent e) {
-        if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
-        {
-            this.newGame();
-        }
-        for(int i=0;i<this.play.getArrButton().length;i++) {
-            for(int j=0;j<this.play.getArrButton()[i].length;j++)
-            {
-                if(e.getButton()== 1 && e.getSource()== this.play.getArrButton()[i][j]) {
-                    this.open(i, j);
-                    if(this.logic.validateGame() == -1)
-                    {
-                        this.lose();
-                        return;
-                    }
-                    else if(this.logic.validateGame()== 1)
-                    {
-                        this.win();
-                    }
-                }
-                else if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
-                    if(this.logic.getMarkFlag(i, j) == true)
-                        this.unsetFlag(i, j);
-                    else
-                        this.setFlag(i,j);
-                }
-            }
-        }
+
     }
 
     public void open(int x, int y)
@@ -143,7 +117,6 @@ public class ControlGame implements MouseListener{
     public void remainMine() {
         String t = String.valueOf(this.logic.getRemainFlag());
         this.pHead.setRemainboms(t);
-        System.out.println(this.pHead.getRemainboms());
     }
 
 }

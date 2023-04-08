@@ -16,11 +16,10 @@ public class PanelPlay extends JPanel {
 		super();
 		this.setLayout(new GridLayout(gamepanel.getH(),gamepanel.getW()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
-		arrButton = new ButtonPlay[gamepanel.getW()][gamepanel.getH()];
+		arrButton = new ButtonPlay[gamepanel.getH()][gamepanel.getW()];
 		for (int i = 0; i < arrButton.length; i++) {
 			for (int j = 0; j < arrButton[i].length; j++) {
 				this.add(arrButton[i][j] = new ButtonPlay());
-
 			}
 		}
 	}
