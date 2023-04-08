@@ -8,13 +8,16 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import Controller.ControlGame;
+import Model.MineSweeperLogic;
 
 public class GameFrame extends JFrame {
+	private int width= MineSweeperLogic.WIDTH;
+	private int height=MineSweeperLogic.HEIGHT;
 	private GamePanel gamepanel;
 	private ControlGame controlGame;
 	public GameFrame(ControlGame controlGame) {
 		this.controlGame=controlGame;
-		this.add(gamepanel = new GamePanel(16, 16, 50, this));
+		this.add(gamepanel = new GamePanel(width, height,this));
 		try {
 			BufferedImage img = ImageIO.read(new File("./Image/minesweeper.png"));
 			this.setIconImage(img);

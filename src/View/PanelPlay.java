@@ -14,7 +14,7 @@ public class PanelPlay extends JPanel {
 
 	public PanelPlay(GamePanel gamepanel) {
 		super();
-		this.setLayout(new GridLayout(gamepanel.getW(), gamepanel.getH()));
+		this.setLayout(new GridLayout(gamepanel.getH(),gamepanel.getW()));
 		this.setBorder(BorderFactory.createLoweredBevelBorder());
 		arrButton = new ButtonPlay[gamepanel.getW()][gamepanel.getH()];
 		for (int i = 0; i < arrButton.length; i++) {

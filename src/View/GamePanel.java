@@ -25,11 +25,10 @@ public class GamePanel extends JPanel {
 		this.panelhead = panelhead;
 	}
 
-	public GamePanel(int w, int h, int boom, GameFrame game) {
+	public GamePanel(int w, int h, GameFrame game) {
 		this.game= game;
 		this.w=w;
 		this.h= h;
-		this.boom= boom;
 		this.setLayout(new BorderLayout(8,10));
 		this.add(panelplay= new PanelPlay(this), BorderLayout.SOUTH);
 		this.add(panelhead= new PanelHead(this), BorderLayout.NORTH);

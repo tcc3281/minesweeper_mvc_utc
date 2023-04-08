@@ -3,7 +3,8 @@ package Model;
 import java.util.Arrays;
 
 public class MineSweeperData {
-    static int SIDE =16;
+    static int WIDTH =16;
+    static int HEIGHT=16;
     static int MINE=40;
     private int [][]board;
     private final double PROBILITYMINE=0.05;
@@ -18,8 +19,8 @@ public class MineSweeperData {
      */
     public MineSweeperData(int x,int y){
         this.limitMine=MINE;
-        this.board=new int[SIDE][SIDE];
-        for(int i = 0; i< SIDE; i++)
+        this.board=new int[HEIGHT][WIDTH];
+        for(int i = 0; i< HEIGHT; i++)
             Arrays.fill(this.board[i],-20);
         createGameData(x,y);
         print();
@@ -68,12 +69,12 @@ public class MineSweeperData {
     public void setMine(){
         while(this.limitMine>0){
             int x,y;
-            x=(int)(Math.random()*this.SIDE)%this.SIDE;
-            y=(int)(Math.random()*this.SIDE)%this.SIDE;
+            x=(int)(Math.random()*this.HEIGHT)%this.HEIGHT;
+            y=(int)(Math.random()*this.WIDTH)%this.WIDTH;
             createMine(x,y);
         }
-        for(int i = 0; i< SIDE; i++){
-            for(int j = 0; j< SIDE; j++)
+        for(int i = 0; i< HEIGHT; i++){
+            for(int j = 0; j< WIDTH; j++)
                 if(this.board[i][j]<-1) this.board[i][j]+=20;
         }
     }
@@ -97,13 +98,13 @@ public class MineSweeperData {
     }
 
     private void print(){
-        for(int i = -1; i< SIDE; i++) {
+        for(int i = -1; i< WIDTH; i++) {
             System.out.printf("%3d",i);
         }
         System.out.println();
-        for(int i = 0; i< SIDE; i++){
+        for(int i = 0; i< HEIGHT; i++){
             System.out.printf("%3d",i);
-            for(int j = 0; j< SIDE; j++){
+            for(int j = 0; j< WIDTH; j++){
                 System.out.printf("%3d",this.board[i][j]);
             }
             System.out.println();
@@ -128,8 +129,8 @@ public class MineSweeperData {
 
     private void check(){
         int countMine=0;
-        for(int i = 0; i<this.SIDE; i++){
-            for(int j = 0; j<this.SIDE; j++){
+        for(int i = 0; i<this.HEIGHT; i++){
+            for(int j = 0; j<this.WIDTH; j++){
                 if(this.board[i][j]==-1) countMine++;
                 if(this.board[i][j]>0){
                     if(!check(i,j)){

@@ -6,7 +6,8 @@ import Controller.ControlGame;
 
 public class MineSweeperLogic {
     public static int MINE=MineSweeperData.MINE;
-    public static int SIDE=MineSweeperData.SIDE;
+    public static int HEIGHT=MineSweeperData.HEIGHT;
+    public static int WIDTH=MineSweeperData.WIDTH;
     public MineSweeperData data; //data của game
     private TimeGame time;
     private int remainFlag; //số cờ còn lại
@@ -23,10 +24,10 @@ public class MineSweeperLogic {
         remainFlag=40;
         data=null;
         remainMine=MINE;
-        remainSquare= SIDE * SIDE -MINE;
+        remainSquare= WIDTH * HEIGHT -MINE;
         this.controlGame =controlGame;
-        this.opened=new boolean[SIDE][SIDE];
-        this.markFlag=new boolean[SIDE][SIDE];
+        this.opened=new boolean[HEIGHT][WIDTH];
+        this.markFlag=new boolean[HEIGHT][WIDTH];
         this.time=new TimeGame(this.controlGame);
     }
 
@@ -97,8 +98,8 @@ public class MineSweeperLogic {
 
 
     public void lose(){
-        for(int i = 0; i<this.SIDE; i++){
-            for(int j = 0; j<this.SIDE; j++){
+        for(int i = 0; i<HEIGHT; i++){
+            for(int j = 0; j<WIDTH; j++){
                 if(this.data.getValueXY(i,j)==-1);//code
             }
         }
@@ -112,7 +113,7 @@ public class MineSweeperLogic {
         return data;
     }
     public void stopOpen() {
-        for(int i = 0; i<this.SIDE; i++ ) {
+        for(int i = 0; i<this.HEIGHT; i++ ) {
             Arrays.fill(this.opened[i], true);
         }
     }
