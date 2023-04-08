@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class MineSweeperData {
     static int WIDTH =16;
     static int HEIGHT=16;
-    static int MINE=60;
+    static int MINE=40;
     private int [][]board;
     private final double PROBILITYMINE=0.05;
-    private final double PROBITITYZERO=0.4;
+    private final double PROBITITYZERO=0.33;
     private int limitZero=15;
     private int limitMine;
     private boolean firstClick=true;
@@ -25,15 +25,6 @@ public class MineSweeperData {
         createGameData(x,y);
         print();
     }
-
-    public int getLimitMine(){
-        return this.limitMine;
-    }
-
-    public int getLimitZero() {
-        return limitZero;
-    }
-
     public int getValueXY(int x, int y){
         return this.board[x][y];
     }
@@ -64,14 +55,13 @@ public class MineSweeperData {
             }
         }
     }
-
     //đặt mìn
     public void setMine(){
         while(this.limitMine>0){
             int x,y;
             x=(int)(Math.random()*this.HEIGHT)%this.HEIGHT;
             y=(int)(Math.random()*this.WIDTH)%this.WIDTH;
-            createMine(x,y);
+            if(this.board[x][y]==-20) createMine(x,y);
         }
         for(int i = 0; i< this.board.length; i++){
             for(int j = 0; j< this.board[i].length; j++)
