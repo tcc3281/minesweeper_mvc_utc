@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controller.ControlGame;
+import Model.MineSweeperLogic;
 
 public class PanelHead extends JPanel {
 	private ButtonSmile smile;
@@ -16,7 +17,7 @@ public class PanelHead extends JPanel {
 	private JLabel[] arrTime;
 	private JLabel mins;
 	private JLabel remainBomsJL;
-	private String  remainboms="40";
+	private String  remainboms= String.valueOf(MineSweeperLogic.MINE);
 	public PanelHead( GamePanel gamepanel) {
 		this.gamepanel= gamepanel;
 		arrTime= new JLabel[3];

@@ -21,7 +21,7 @@ public class MineSweeperLogic {
     private final boolean UNFLAG=false;
 
     public MineSweeperLogic(ControlGame controlGame){
-        remainFlag=40;
+        remainFlag=MINE;
         data=null;
         remainMine=MINE;
         remainSquare= WIDTH * HEIGHT -MINE;
