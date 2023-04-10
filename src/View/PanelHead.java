@@ -47,6 +47,7 @@ public class PanelHead extends JPanel {
 	public void newGame(){
 		this.setRemainboms(this.getRemainboms());
 		this.setTime("000");
+		this.smile.setSmile();
 	}
 	public void setTime(String t) {
 		for(int i=0; i< 3; i++) {
