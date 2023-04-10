@@ -13,7 +13,7 @@ public class MineSweeperLogic {
     private int remainFlag; //số cờ còn lại
     private int remainMine; //số mìn còn lại
     private int remainSquare; //số ô không phải bom còn lại
-    private boolean flagMine=true; //đánh dấu bấm vào bom hay chưa
+    private boolean flagMine; //đánh dấu bấm vào bom hay chưa
     private ControlGame controlGame; //biến control
     private boolean [][]opened; //đánh dấu ô đã mở
     private boolean [][]markFlag; //đánh dấu ô đang trạng thái cắm cờ hay ko
@@ -26,6 +26,7 @@ public class MineSweeperLogic {
         newGame();
     }
     public void newGame(){
+        flagMine=true;
         remainFlag=MINE;
         remainMine=MINE;
         remainSquare= WIDTH * HEIGHT - MINE;
