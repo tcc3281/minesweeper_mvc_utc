@@ -17,7 +17,6 @@ public class ControlGame implements MouseListener{
         this.gameFrame=new GameFrame(this);
         int x= MineSweeperLogic.MINE;
         this.logic=new MineSweeperLogic(this);
-
         this.play=this.gameFrame.getGamepanel().getPanelplay();
         this.pHead=this.gameFrame.getGamepanel().getPanelhead();
         this.gameFrame.getGamepanel().getPanelplay().addMouse(this);
@@ -94,8 +93,10 @@ public class ControlGame implements MouseListener{
 
     public void newGame()
     {
-        this.gameFrame.dispose();
-        new ControlGame();
+        this.logic.newGame();
+        this.play.newGame();
+        this.pHead.newGame();
+        this.remainMine();
     }
     public void win()
     {

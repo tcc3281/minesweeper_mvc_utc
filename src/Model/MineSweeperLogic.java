@@ -21,18 +21,22 @@ public class MineSweeperLogic {
     private final boolean UNFLAG=false;
 
     public MineSweeperLogic(ControlGame controlGame){
+        this.controlGame =controlGame;
+        this.time=null;
+        newGame();
+    }
+    public void newGame(){
         remainFlag=MINE;
-        data=null;
         remainMine=MINE;
         remainSquare= WIDTH * HEIGHT - MINE;
-        this.controlGame =controlGame;
+        data=null;
+        if(this.time!=null) this.time.cancel();
         this.opened=new boolean[HEIGHT][WIDTH];
         this.markFlag=new boolean[HEIGHT][WIDTH];
         for(int i=0;i<markFlag.length;i++)
             Arrays.fill(markFlag[i],false);
         this.time=new TimeGame(this.controlGame);
     }
-
     public String open(int x, int y){
         if(this.data==null){
             this.data=new MineSweeperData(x,y);

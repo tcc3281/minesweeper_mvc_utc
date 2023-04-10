@@ -1,16 +1,18 @@
 package View;
 
+import Model.MineSweeperData;
+import Model.MineSweeperLogic;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
-	private ButtonPlay buttonplay;
 	private PanelPlay panelplay;
 	private PanelHead panelhead;
 	private GameFrame game;
-	private int w;
-	private int h;
+	static int WIDTH= MineSweeperLogic.WIDTH;
+	static int HEIGHT= MineSweeperLogic.HEIGHT;
 	private int boom;
 	public PanelPlay getPanelplay() {
 		return panelplay;
@@ -25,10 +27,8 @@ public class GamePanel extends JPanel {
 		this.panelhead = panelhead;
 	}
 
-	public GamePanel(int w, int h, GameFrame game) {
+	public GamePanel(GameFrame game) {
 		this.game= game;
-		this.w=w;
-		this.h= h;
 		this.setLayout(new BorderLayout(8,10));
 		this.add(panelplay= new PanelPlay(this), BorderLayout.SOUTH);
 		this.add(panelhead= new PanelHead(this), BorderLayout.NORTH);
@@ -38,18 +38,6 @@ public class GamePanel extends JPanel {
 	}
 	public void setGame(GameFrame game) {
 		this.game = game;
-	}
-	public int getW() {
-		return w;
-	}
-	public void setW(int w) {
-		this.w = w;
-	}
-	public int getH() {
-		return h;
-	}
-	public void setH(int h) {
-		this.h = h;
 	}
 	public int getBoom() {
 		return boom;

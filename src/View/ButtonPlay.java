@@ -10,6 +10,9 @@ public class ButtonPlay extends JButton {
 	public ButtonPlay()
 	{
 		setPreferredSize(new Dimension(30, 30));
+		this.setDefault();
+	}
+	public void setDefault(){
 		this.appearence("-2");
 	}
 	public void appearence(String number) {

@@ -41,9 +41,13 @@ public class PanelHead extends JPanel {
 		boms.add(mins= new JLabel());
 		mins.setIcon(new ImageIcon("./Image/bom.png"));
 		boms.add(remainBomsJL = new JLabel(this.getRemainboms()));
-
+		newGame();
 	}
 
+	public void newGame(){
+		this.setRemainboms(this.getRemainboms());
+		this.setTime("000");
+	}
 	public void setTime(String t) {
 		for(int i=0; i< 3; i++) {
 			String s=this.paintTime(t.charAt(i));
