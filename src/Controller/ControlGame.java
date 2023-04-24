@@ -4,40 +4,52 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import Model.MineSweeperLogic;
+import Sound.SoundGame;
 import View.GameFrame;
 import View.PanelHead;
 import View.PanelPlay;
+
 public class ControlGame implements MouseListener{
     private MineSweeperLogic logic;
     private PanelHead pHead;
     private PanelPlay play;
     private GameFrame gameFrame;
+    private SoundGame soundGame;
 
     public ControlGame() {
+        this.soundGame =new SoundGame();
         this.gameFrame=new GameFrame(this);
-        int x= MineSweeperLogic.MINE;
         this.logic=new MineSweeperLogic(this);
         this.play=this.gameFrame.getGamepanel().getPanelplay();
         this.pHead=this.gameFrame.getGamepanel().getPanelhead();
         this.gameFrame.getGamepanel().getPanelplay().addMouse(this);
         this.gameFrame.getGamepanel().getPanelhead().addMouse(this);
-
     }
     @Override
     public void mouseClicked(MouseEvent e) {
+        for(int i=0;i<this.play.getArrButton().length;i++)
+            for(int j=0;j<this.play.getArrButton()[i].length;j++)
+        if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
+            if(this.logic.getMarkFlag(i, j) == true)
+                this.unsetFlag(i, j);
+            else
+                this.setFlag(i,j);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(e.getButton()==1 && e.getSource()==this.gameFrame.getMenu().getStop()){
+            System.out.println("er");
+        }
         if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
             this.newGame();
+        if(!this.logic.getTime().getStatusPause()) return;
         for(int i=0;i<this.play.getArrButton().length;i++) {
             for(int j=0;j<this.play.getArrButton()[i].length;j++)
             {
                 if(e.getButton()== 1 && e.getSource()== this.play.getArrButton()[i][j]) {
                     this.open(i, j);
-                }
-                else if(e.getButton()==3&& e.getSource()== this.play.getArrButton()[i][j]) {
-                    if(this.logic.getMarkFlag(i, j) == true)
-                        this.unsetFlag(i, j);
-                    else
-                        this.setFlag(i,j);
                 }
                 if(this.logic.validateGame() == -1)
                 {
@@ -49,12 +61,6 @@ public class ControlGame implements MouseListener{
             }
         }
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-
-    }
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -62,8 +68,9 @@ public class ControlGame implements MouseListener{
     }
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-
+        if(e.getSource()==this.gameFrame.getMenuBar()){
+            this.gameFrame.getMenuBar().getMenu(0);
+        }
     }
     @Override
     public void mouseExited(MouseEvent e) {
@@ -72,13 +79,13 @@ public class ControlGame implements MouseListener{
 
     public void open(int x, int y)
     {
-        if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)) return;
+        if(this.logic.getTime().getStatusPause()  && (this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y))) return;
         String t = this.logic.open(x, y);
         this.play.open(t, x, y);
     }
     public void setFlag(int x, int y)
     {
-        if(this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y)==true) return;
+        if(this.logic.getTime().getStatusPause()  && (this.logic.getMarkFlag(x, y) == true || this.logic.getOpened(x, y))) return;
         this.logic.setFlag(x, y);
         this.play.setFlag(x,y);
         this.remainMine();
@@ -100,11 +107,13 @@ public class ControlGame implements MouseListener{
     }
     public void win()
     {
+        this.soundGame.soundWin();
         this.pHead.win();
         this.winOpen();
     }
     public void lose()
     {
+        this.soundGame.soundLose();
         for(int i=0;i<this.play.getArrButton().length;i++) {
             for(int j=0;j<this.play.getArrButton()[i].length;j++)
                 if(this.logic.getData().getValueXY(i, j)==-1) this.open(i, j);
@@ -124,7 +133,36 @@ public class ControlGame implements MouseListener{
         for(int i=0;i<this.play.getArrButton().length;i++) {
             for(int j=0;j<this.play.getArrButton()[i].length;j++){
                 if(this.logic.getData().getValueXY(i,j)!=-1)this.open(i, j);
-                else this.play.setFlag(i,j);
+                else this.setFlag(i,j);
+            }
+        }
+    }
+
+    public void pause(){
+        if(this.logic.validateGame()!=0) return;
+        if(this.logic.getTime().getStatusPause()){
+            this.play.setDefaultGUI();
+            this.logic.swapStatus();
+        }
+        else{
+            for(int i=0;i<MineSweeperLogic.HEIGHT;i++){
+                for(int j=0;j<MineSweeperLogic.WIDTH;j++){
+                    if(this.logic.getOpened(i,j)==true) this.open(i,j);
+                    if(this.logic.getMarkFlag(i,j)) this.setFlag(i,j);
+                }
+            }
+            this.logic.swapStatus();
+        }
+    }
+
+    public void openData(String name){
+        this.newGame();
+        this.logic=this.logic.openData(name);
+        if(this.logic==null) System.out.println("null");
+        for(int i=0;i<MineSweeperLogic.HEIGHT;i++){
+            for(int j=0;j<MineSweeperLogic.WIDTH;j++){
+                if(this.logic.getOpened(i,j)==true) this.open(i,j);
+                if(this.logic.getMarkFlag(i,j)) this.setFlag(i,j);
             }
         }
     }

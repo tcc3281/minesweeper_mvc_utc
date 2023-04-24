@@ -60,4 +60,13 @@ public class PanelPlay extends JPanel {
 			for (int j = 0; j < this.arrButton[i].length; j++)
 				this.arrButton[i][j].addMouseListener(controlGame);
 	}
+
+	public void setDefaultGUI(){
+		for(int i=0;i<this.arrButton.length;i++){
+			for(int j=0;j<this.arrButton[i].length;j++){
+				this.arrButton[i][j].setDefault();
+			}
+		}
+	}
+
 }

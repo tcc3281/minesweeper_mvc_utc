@@ -5,14 +5,14 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import Controller.ControlGame;
-import Model.MineSweeperLogic;
 
 public class GameFrame extends JFrame {
 	private GamePanel gamepanel;
 	private ControlGame controlGame;
+	private Menu menu;
 	public GameFrame(ControlGame controlGame) {
 		this.controlGame=controlGame;
 		this.add(gamepanel = new GamePanel(this));
@@ -22,6 +22,9 @@ public class GameFrame extends JFrame {
 		} catch (IOException e ) {
 			e.printStackTrace();
 		}
+		this.setTitle("Mine Sweeper");
+		this.menu=new Menu(controlGame);
+		this.setJMenuBar(menu);
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -34,5 +37,8 @@ public class GameFrame extends JFrame {
 	}
 	public void setGamepanel(GamePanel gamepanel) {
 		this.gamepanel = gamepanel;
+	}
+	public Menu getMenu(){
+		return this.menu;
 	}
 }

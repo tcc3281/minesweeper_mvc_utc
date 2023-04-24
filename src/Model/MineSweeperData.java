@@ -17,13 +17,13 @@ public class MineSweeperData {
     - nothing = 0;
     - number >0 : quality mine around
      */
+    //
     public MineSweeperData(int x,int y){
         this.limitMine=MINE;
         this.board=new int[HEIGHT][WIDTH];
         for(int i = 0; i< HEIGHT; i++)
             Arrays.fill(this.board[i],-20);
         createGameData(x,y);
-        print();
     }
     public int getValueXY(int x, int y){
         return this.board[x][y];
@@ -134,5 +134,16 @@ public class MineSweeperData {
             return;
         }
         System.out.println("Correct");
+    }
+
+    @Override
+    public String toString() {
+        String res="";
+        return  Arrays.toString(board) +
+                " " + PROBILITYMINE +
+                " " + PROBITITYZERO +
+                " " + limitZero +
+                " " + limitMine +
+                " " + firstClick;
     }
 }
