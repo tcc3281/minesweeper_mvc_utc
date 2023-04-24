@@ -135,15 +135,4 @@ public class MineSweeperData {
         }
         System.out.println("Correct");
     }
-
-    @Override
-    public String toString() {
-        String res="";
-        return  Arrays.toString(board) +
-                " " + PROBILITYMINE +
-                " " + PROBITITYZERO +
-                " " + limitZero +
-                " " + limitMine +
-                " " + firstClick;
-    }
 }

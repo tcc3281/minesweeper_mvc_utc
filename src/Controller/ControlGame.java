@@ -40,7 +40,7 @@ public class ControlGame implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e) {
         if(e.getButton()==1 && e.getSource()==this.gameFrame.getMenu().getStop()){
-            System.out.println("er");
+            this.pause();
         }
         if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
             this.newGame();
@@ -153,17 +153,6 @@ public class ControlGame implements MouseListener{
             }
             this.logic.swapStatus();
         }
-    }
-
-    public void openData(String name){
-        this.newGame();
-        this.logic=this.logic.openData(name);
-        if(this.logic==null) System.out.println("null");
-        for(int i=0;i<MineSweeperLogic.HEIGHT;i++){
-            for(int j=0;j<MineSweeperLogic.WIDTH;j++){
-                if(this.logic.getOpened(i,j)==true) this.open(i,j);
-                if(this.logic.getMarkFlag(i,j)) this.setFlag(i,j);
-            }
-        }
+        this.gameFrame.getMenu().swap();
     }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import Controller.ControlGame;
 
-public class MineSweeperLogic implements Serializable {
+public class MineSweeperLogic{
     public static int MINE=MineSweeperData.MINE;
     public static int HEIGHT=MineSweeperData.HEIGHT;
     public static int WIDTH=MineSweeperData.WIDTH;
@@ -130,51 +130,5 @@ public class MineSweeperLogic implements Serializable {
     }
     public void swapStatus(){
         if(this.data!=null) this.time.swapStatus();
-    }
-    //save data
-    public MineSweeperLogic openData(String name){
-        String path="./savedata/"+name+".ser";
-        FileInputStream  fileInputStream=null;
-        ObjectInputStream objectInputStream=null;
-        MineSweeperLogic res=null;
-        try {
-            fileInputStream=new FileInputStream(path);
-            objectInputStream=new ObjectInputStream(fileInputStream);
-            System.out.println("r");
-            res=(MineSweeperLogic)objectInputStream.readObject();
-            System.out.println("r");
-        }catch (ClassNotFoundException e){
-            System.out.println("EI");
-        }catch (IOException e){
-            System.out.println("EC");
-        }
-        finally {
-            try {
-                if(objectInputStream!=null) objectInputStream.close();
-                if (fileInputStream!=null) fileInputStream.close();
-            }catch (IOException e){
-
-            }
-        }
-        return res;
-    }
-    public void saveData(String name){
-        String path="./savedata/"+name+".ser";
-        FileOutputStream fileOutputStream=null;
-        ObjectOutputStream objectOutputStream=null;
-        try {
-            fileOutputStream=new FileOutputStream(new File(path));
-            objectOutputStream=new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this);
-        }catch (IOException e){
-
-        }finally {
-            try {
-                if(objectOutputStream!=null) objectOutputStream.close();
-                if (fileOutputStream!=null) fileOutputStream.close();
-            }catch (IOException e){
-
-            }
-        }
     }
 }

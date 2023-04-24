@@ -1,12 +1,8 @@
 package View;
 
 import Controller.ControlGame;
-import View.Save.SaveJD;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu extends JMenuBar {
     private JMenu fileMenu;
@@ -30,14 +26,14 @@ public class Menu extends JMenuBar {
         stop.addMouseListener(controlGame);
         this.add(fileMenu);
         this.add(actionMenu);
-
     }
     public void setControlGame(ControlGame controlGame){
         this.controlGame=controlGame;
     }
     public void swap(){
-        if(this.stopItem==PAUSE) this.stopItem=CONTINUE;
+        if(this.stopItem.equals(PAUSE)) this.stopItem=CONTINUE;
         else this.stopItem=PAUSE;
+        this.stop.setText(stopItem);
     }
     public JMenuItem getStop(){
         return this.stop;
