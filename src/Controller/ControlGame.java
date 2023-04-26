@@ -42,7 +42,7 @@ public class ControlGame implements MouseListener{
         if(e.getButton()==1 && e.getSource()==this.gameFrame.getMenu().getStop()){
             this.pause();
         }
-        if(e.getButton()== 1 && e.getSource()==this.pHead.getSmile())
+        if(e.getButton()== 1 && (e.getSource()==this.pHead.getSmile() || e.getSource()==this.gameFrame.getMenu().getNewGame()))
             this.newGame();
         if(!this.logic.getTime().getStatusPause()) return;
         for(int i=0;i<this.play.getArrButton().length;i++) {
@@ -68,9 +68,7 @@ public class ControlGame implements MouseListener{
     }
     @Override
     public void mouseEntered(MouseEvent e) {
-        if(e.getSource()==this.gameFrame.getMenuBar()){
-            this.gameFrame.getMenuBar().getMenu(0);
-        }
+        // TODO
     }
     @Override
     public void mouseExited(MouseEvent e) {

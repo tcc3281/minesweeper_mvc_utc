@@ -5,11 +5,11 @@ import java.util.Arrays;
 public class MineSweeperData {
     static int WIDTH =16;
     static int HEIGHT=16;
-    static int MINE=40;
+    static int MINE=60;
     private int [][]board;
-    private final double PROBILITYMINE=0.05;
+    private final double PROBILITYMINE=0.065;
     private final double PROBITITYZERO=0.33;
-    private int limitZero=15;
+    private int limitZero=17;
     private int limitMine;
     private boolean firstClick=true;
     /*

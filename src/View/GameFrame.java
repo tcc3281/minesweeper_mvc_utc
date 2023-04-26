@@ -12,7 +12,7 @@ import Controller.ControlGame;
 public class GameFrame extends JFrame {
 	private GamePanel gamepanel;
 	private ControlGame controlGame;
-	private Menu menu;
+	private Menugame menu;
 	public GameFrame(ControlGame controlGame) {
 		this.controlGame=controlGame;
 		this.add(gamepanel = new GamePanel(this));
@@ -23,7 +23,7 @@ public class GameFrame extends JFrame {
 			e.printStackTrace();
 		}
 		this.setTitle("Mine Sweeper");
-		this.menu=new Menu(controlGame);
+		this.menu=new Menugame(controlGame);
 		this.setJMenuBar(menu);
 		this.pack();
 		this.setLocationRelativeTo(null);
@@ -38,7 +38,7 @@ public class GameFrame extends JFrame {
 	public void setGamepanel(GamePanel gamepanel) {
 		this.gamepanel = gamepanel;
 	}
-	public Menu getMenu(){
+	public Menugame getMenu(){
 		return this.menu;
 	}
 }

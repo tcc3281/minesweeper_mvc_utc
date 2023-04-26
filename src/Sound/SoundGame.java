@@ -14,6 +14,7 @@ public class SoundGame {
         try {
             this.addSound(lose,"Lose");
             this.addSound(win,"Win");
+            this.soundWin();
         }catch (Exception e){
             System.out.println("Er");
         }

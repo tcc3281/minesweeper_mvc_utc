@@ -131,4 +131,8 @@ public class MineSweeperLogic{
     public void swapStatus(){
         if(this.data!=null) this.time.swapStatus();
     }
+    public static void save(){
+
+    }
+
 }
